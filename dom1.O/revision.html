@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Enter data">
+    <button onclick="show()" id="myButton">Submit</button>
+    <div>
+        <input type="text" id="display">
+    </div>
+    <script>
+        let input1=document.getElementById("myInput")
+        let show1=document.getElementById("display")
+        function show(){
+            alert("Entered Value: "+input1.value)
+            show1.value="Entered Value: "+input1.value
+        }
+    </script>
+</body>
+</html>
