@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #button{
+            margin-top: 20px;
+        }
+        #input{
+           margin-top: 20px;
+        }
+        input{
+            
+          height: 30px;
+            width: 230px;
+        }
+    </style>
+</head>
+<body>
+    <div id="input">
+        <input type="text" id="input1" placeholder="Enter 1st Number">
+        <input type="text" id="input2" placeholder="Enter 2nd Number">
+
+    </div>
+    <div id="button">
+        <button onclick="Addition()">Addition</button>
+        <button onclick="Subtraction()">Subtraction</button>
+        <button onclick="Division()">Division</button>
+        <button onclick="Multiplication()">Multiplication</button>
+    </div>
+</body>
+<script>
+let number1=document.getElementById("input1")
+let number2=document.getElementById("input2")
+function Addition(){
+alert(+number1.value + +number2.value)
+}
+function Subtraction(){
+    alert(+number1.value - +number2.value)
+}
+function Division(){
+    alert(+number1.value / +number2.value)
+}
+function Multiplication(){
+    alert(+number1.value * +number2.value)
+}
+</script>
+</html>
