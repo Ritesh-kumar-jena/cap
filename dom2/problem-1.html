@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #heading{
+            font-weight: bold;
+            color: rgba(25, 157, 162, 0.827);
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-size: 40px;
+        }
+        #parent{
+            width: 40%;
+            margin: auto;
+           
+            display: grid;
+            grid-template-columns: repeat(4,60px);
+            grid-auto-rows: 60px;
+            gap: 10px;
+            justify-content: center;
+            padding: 50px 0px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        #parent>div{
+            text-align: center;
+            padding: 20px 0px;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        }
+        #parent>div:nth-child(1){
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+        #cancel{
+            background-color: red; color: aliceblue; 
+        }
+        .operator , #equal{
+            background-color: black;
+            color: aliceblue;
+        }
+        @media all and (min-width:1020px) and (max-width:2000px){
+            #parent{
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">Masai Calculator</h1>
+    <div id="parent">
+        <div  id="display">
+        </div>
+        <div class="number">1</div> 
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="operator">+</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div  class="operator">-</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+        <div  class="operator">*</div>
+        <div id="cancel"onclick="erase()">C</div>
+        <div class="number">0</div>
+        <div id="equal">=</div>
+        <div class="operator">/</div>
+        
+        
+    </div>
+</body>
+<script>
+ let numbers=document.querySelectorAll( ".number")
+let mathmaticaloperators=document.querySelectorAll(".operator")
+let show=document.getElementById("display")
+let eraser=document.getElementById("cancel")
+let answer=document.getElementById("equal")
+let firstNumber=""
+let secondnumber=""
+let operators=""
+let isNumber= true;
+answer.addEventListener("click",function(){
+show.innerText=calculate(firstNumber,secondnumber,operators)
+firstNumber=show.innerText
+secondnumber=""
+operators=""
+
+})
+for(var i=0;i<numbers.length;i++){
+    numbers[i].addEventListener("click",function(event){
+       if(isNumber==true){
+        firstNumber+=event.target.innerText
+        show.innerText=firstNumber
+       }
+       else{
+        secondnumber+=event.target.innerText
+        show.innerText=secondnumber
+       }
+    })
+    
+}
+for(var j=0;j<mathmaticaloperators.length;j++){
+    mathmaticaloperators[j].addEventListener("click",function(event){
+        isNumber=false
+        operators+=event.target.innerText
+
+    })
+}
+function calculate(firstNumber,secondnumber,operators){
+    switch(operators){
+        case "+":
+            return Number(firstNumber) + Number(secondnumber)
+            case "-":
+            return Number(firstNumber) - Number(secondnumber)
+            case "*":
+            return Number(firstNumber) * Number(secondnumber)
+            case "/":
+            return Number(firstNumber) / Number(secondnumber)
+    }
+}
+
+function erase(){
+    show.innerText=""
+    firstNumber=""
+    secondnumber=""
+    operators=""
+    isNumber=true
+}
+</script>
+</html>
