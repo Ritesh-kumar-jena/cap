@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent{
+            width: 75%;
+            height: 120px;
+           margin-left: 150px;
+           display: flex;
+           justify-content: space-around;
+        }
+        #parent>div{
+            border: 1px solid black;
+            height: 120px;
+            width: 20%;
+        }
+        #tag{
+           display: flex;
+           justify-content: space-evenly;
+        }
+        #keypad{
+            width: 40%;
+            margin: auto;
+           
+            display: grid;
+            grid-template-columns: repeat(3,60px);
+            grid-auto-rows: 60px;
+            gap: 10px;
+            justify-content: center;
+            padding: 50px 0px;
+        }
+        #keypad>div{
+            text-align: center;
+            padding: 20px 0px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        #display{
+          background-color: gray;
+          grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        .green{
+            background-color: green;
+            border: 1px solid black;
+        }
+        .red{
+            background-color: red;
+            border: 1px solid black;
+        }
+        #brown{
+            background-color: brown;
+            border: 1px solid black;
+        }
+        #min1{
+         background-color: red;
+        }
+        #max1{
+            background-color: green;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        #touch{
+            background-color: black;
+            color: bisque;
+            height: 80px;
+            width: 180px;
+            font-weight: bold;
+            margin-left: 45%;
+        }
+        #tagmin{
+            margin-right: 30px;
+        }
+        #tagmax{
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="min1"><h1 id="min">100</h1></div>
+        <div id="max1"><h1 id="max">150</h1></div>
+    </div>
+    <div id="tag">
+        <div><h2 id="tagmin">min</h2></div>
+        <div><h2 id="tagmax">max</h2></div>
+    </div>
+    <div id="keypad">
+        <div id="display"></div>
+        <div class="green">1</div>
+        <div class="red">2</div>
+        <div class="green">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="green">7</div>
+        <div class="red">8</div>
+        <div class="green">9</div>
+        <div></div>
+        <div id="brown">0</div>
+        <div></div>
+    </div>
+    <button id="touch" onclick="show()">Enter</button>
+    
+    
+</body>
+<script>
+    let score=document.getElementById("display")
+    let key=document.querySelectorAll(".green,.red,#brown")
+    let minimum=document.getElementById("min")
+    let maximum=document.getElementById("max")
+    let number=""
+    for(var i=0;i<key.length;i++){
+        key[i].addEventListener("click",function(event){
+            number+=event.target.innerText
+             score.innerText=number
+        })
+    }
+    function show(){
+        if(Number(minimum.innerText) >Number(score.innerText)){
+            minimum.innerText=score.innerText
+        }
+        if(Number(maximum.innerText)< Number(score.innerText)){
+        maximum.innerText=score.innerText
+        }
+       score.innerText=""
+       number=""
+    }
+    
+</script>
+</html>
