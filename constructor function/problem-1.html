@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    
+</body>
+<script>
+      function BankAccount(accountNumber,name,type,balance){
+        this.accountNumber=accountNumber;
+        this.name=name;
+        this.type=type;
+        this.balance=balance;
+        this.isActive=function(){
+            if(this.balance>=0){
+              
+              return true
+            }
+              else {
+                return false
+              }  
+        }
+         this.deposite=function(amount){
+            if(this.isActive()===true) {
+                   this.balance+=amount
+            console.log(` After deposite ${amount}rs Your updated balance is :  ${this.balance}rs`)
+         }
+         else{
+            console.log("Your account is Blocked")
+         }
+        }
+         this.withdrawl=function(amount){
+            if(this.balance>=amount){
+                this.balance-=amount
+                console.log(` After withdrawl ${amount}rs Your updated balance is :  ${this.balance}rs`)
+            }
+            else{
+                console.log("Insufisent Balance")
+            }
+         }
+         this.checkBalance=function(){
+             if(this.isActive()===true){
+                console.log(`Your account blance is : ${this.balance}rs`)
+             }
+             
+         }
+
+      }
+      let account1= new BankAccount(678493058,"raghu","saving",86000)
+      console.log(`account holder name : ${account1.name}`)
+      console.log(`account number : ${account1.accountNumber}`)
+      console.log(`account Type : ${account1.type}`)
+      console.log(`account balance : ${account1.balance}rs`)
+      if(account1.isActive()===true){
+        console.log("Your account is Active")
+      }
+      else{
+        console.log("Your account is InActive")
+      }
+      account1.deposite(120000)
+     account1.withdrawl(6000)
+     account1.checkBalance()
+     console.log("-------------------------------------------------")
+     let account2= new BankAccount(878493094,"rajiv","saving",296000)
+      console.log(`account holder name : ${account2.name}`)
+      console.log(`account number : ${account2.accountNumber}`)
+      console.log(`account Type : ${account2.type}`)
+      console.log(`account balance : ${account2.balance}rs`)
+      if(account2.isActive()===true){
+        console.log("Your account is Active")
+      }
+      else{
+        console.log("Your account is InActive")
+      }
+      account2.deposite(1310000)
+     account2.withdrawl(6000)
+     account2.checkBalance()
+     console.log("-------------------------------------------------")
+     let account3= new BankAccount(928493044,"shreya","current",150000000)
+      console.log(`account holder name : ${account3.name}`)
+      console.log(`account number : ${account3.accountNumber}`)
+      console.log(`account Type : ${account3.type}`)
+      console.log(`account balance : ${account3.balance}rs`)
+      if(account3.isActive()===true){
+        console.log("Your account is Active")
+      }
+      else{
+        console.log("Your account is InActive")
+      }
+      account3.deposite(10000000)
+     account3.withdrawl(60000000)
+     account3.checkBalance()
+     console.log("-------------------------------------------------")
+     let account4= new BankAccount(578493048,"abdul","saving",-10)
+      console.log(`account holder name : ${account4.name}`)
+      console.log(`account number : ${account4.accountNumber}`)
+      console.log(`account Type : ${account4.type}`)
+      console.log(`account balance : ${account4.balance}rs`)
+      if(account4.isActive()===true){
+        console.log("Your account is Active")
+      }
+      else{
+        console.log("Your account is InActive")
+      }
+      account4.deposite(120000)
+     account4.withdrawl(6000)
+     account4.checkBalance()
+     console.log("-------------------------------------------------")
+     let account5= new BankAccount(548493022,"dhurv","saving",60)
+      console.log(`account holder name : ${account5.name}`)
+      console.log(`account number : ${account5.accountNumber}`)
+      console.log(`account Type : ${account5.type}`)
+      console.log(`account balance : ${account5.balance}rs`)
+      if(account5.isActive()===true){
+        console.log("Your account is Active")
+      }
+      else{
+        console.log("Your account is InActive")
+      }
+      account5.deposite(40)
+     account5.withdrawl(200)
+     account5.checkBalance()
+     console.log("-------------------------------------------------")
+     let BankStatus=[account1,account2,account3,account4,account5]
+     function getTotalBalance(){
+      let sum=0
+      for(var i=0;i<BankStatus.length;i++){
+        if(BankStatus[i].isActive()===true){
+         sum+= BankStatus[i].balance
+        }
+      }
+      console.log(`Total balance of all active account : ${sum}rs`)
+      
+     }
+     getTotalBalance()
+     
+    
+    
+</script>
+</html>
