@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cont{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+    #cont>div{
+        border: 2px solid red;
+        background-color: aqua;
+    }
+    #cont>div>h3{
+        margin-left: 10px;
+    }
+</style>
+<body>
+   <div id="cont"></div> 
+</body>
+<script>
+let container=document.getElementById("cont")
+    function Author(name,birthYear,nationality){
+        this.name=name;
+        this.birthYear=birthYear;
+        this.nationality=nationality
+    }
+
+    let author1=new Author("Tulshi Dash","13.08.1532","Indian")
+    let author2=new Author("SWami Vivekananda","12.01.1863","Indian")
+    let author3=new Author("Bima Bhoi","Year : 1850","Indian")
+    let author4=new Author("William Shakespeare","26.04.1564","English")
+    let author5=new Author("Geoffrey Chaucer","Year : 1340","Indian")
+    let author6=new Author("Ben Jonson","11.06.1572","English")
+
+    function Book(title,author,genre,price){
+        this.title=title
+        this.author=author;
+        this.genre=genre;
+        this.price=price
+        this.getBookInfo=function(){
+       
+        let div=document.createElement("div")
+        let h1=document.createElement("h3")
+        let h2=document.createElement("h3")
+        let h3=document.createElement("h3")
+        let h4=document.createElement("h3")
+        h1.innerText=`Name Of The Book : ${this.title}`
+        h2.innerText=`Name of the writer : ${this.author.name}`
+        h3.innerText=`Genre : ${this.genre}`
+        h4.innerText=`Amount : ${this.price}rs`
+        div.append(h1,h2,h3,h4)
+        container.append(div)
+        console.log(`Name Of The Book : ${this.title}`)
+        console.log(`Name of the writer : ${this.author.name}`)
+        console.log(`Genre : ${this.genre}`)
+        console.log(`Amount : ${this.price}rs`)
+
+        }
+    }
+    let book1=new Book("Hanuman Chalisa",author1,"Mantra",200)
+    let book2=new Book("Karma Yoga",author2,"Spiritual Liberation",400)
+    let book3=new Book("Stuti Chintamani",author3,"Devotional",375)
+    let book4=new Book("Macbeth",author4,"Tragedy",1500)
+    let book5=new Book("The Canterbury Tales",author5,"Social Class",350)
+    let book6=new Book("Volpone",author5,"Greed",100)
+   book1.getBookInfo()
+  console.log("----------------------------------")
+   book2.getBookInfo()
+   console.log("----------------------------------")
+   book3.getBookInfo()
+   console.log("----------------------------------")
+   book4.getBookInfo()
+   console.log("----------------------------------")
+   book5.getBookInfo()
+   console.log("----------------------------------")
+   book6.getBookInfo()
+   
+   
+</script>
+</html>
