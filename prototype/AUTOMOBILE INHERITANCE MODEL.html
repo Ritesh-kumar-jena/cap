@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Vehicle( brand, model, speed, fuelType){
+        this.brand=brand;
+        this.model=model;
+        this.speed=speed;
+        this.fuelType=fuelType;
+    }
+    Vehicle.prototype.accelerate=function(accelaration){
+        this.speed+=accelaration;
+        console.log(`Your speed is increses to => ${this.speed}KMPH`);
+    }
+    Vehicle.prototype.brake=function(accelaration){
+        this.speed-=accelaration;
+        console.log(`Your speed is decreses to => ${this.speed}KMPH`);
+    }
+    Vehicle.prototype.refuel=function(){
+        console.log(` The vehicle is refueling`);
+    }
+    
+
+   function Car( brand, model, speed, fuelType,numberOfWheels){
+
+         Vehicle.call(this,brand, model, speed, fuelType)
+
+         this.numberOfWheels=numberOfWheels;
+   }
+
+   Car.prototype.hunk=function(){
+    console.log(`pep...pep...pep..`)
+   }
+
+   Object.setPrototypeOf(Car.prototype,Vehicle.prototype)
+   let car1=new Car("BMW","BMW-XM",240,"petrol",4)
+   console.log(car1)
+   console.log(`Brand : ${car1.brand}`)
+   console.log(`Model : ${car1.model}`)
+   console.log(`Now your speed is : ${car1.speed}KMPH`)
+   console.log(`Fuel Type : ${car1.fuelType}`)
+   console.log(`No of wheels : ${car1.numberOfWheels}`)
+   car1.accelerate(160)
+   car1.brake(200)
+   car1.refuel()
+   car1.hunk()
+   console.log("-----------------------------")
+   let car2=Object.create(car1)
+   car2.colour="red"
+   car2.start=function(){
+    console.log("Your car is start")
+   }
+   console.log(car2)
+   console.log(`Brand : ${car2.brand}`)
+   console.log(`Model : ${car2.model}`)
+   console.log(`Now your speed is : ${car2.speed}KMPH`)
+   console.log(`Fuel Type : ${car2.fuelType}`)
+   console.log(`No of wheels : ${car2.numberOfWheels}`)
+   console.log(`Your car colour is : ${car2.colour}`)
+   car2.accelerate(260)
+   car2.brake(200)
+   car2.refuel()
+   car2.hunk()
+   car2.start()
+</script>
+</html>
