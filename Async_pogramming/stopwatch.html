@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cont{
+            display: flex;
+        }
+        #cont>div{
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <div id="min">00</div>
+        <div>.</div>
+        <div id="sec">00</div>
+        <div>.</div>
+        <div id="milisec">00</div>
+    </div>
+    
+    <button onclick="start()">start</button>
+    <button onclick="puse()">puse</button>
+    <button onclick="reset()">reset</button>
+    <h2></h2>
+   
+</body>
+<script>
+let cont=document.getElementById("cont")
+let milisec= document.getElementById("milisec")
+let sec= document.getElementById("sec")
+let min= document.getElementById("min")
+let obj={}
+obj.sec=0
+obj.milisec=0
+obj.min=0
+let setTimer;
+let timeStop=false;
+let startTimer=false;
+function timer(){
+   setTimer= setInterval(()=>{
+       obj.milisec++
+    milisec.innerText=obj.milisec % 100
+if(milisec.innerText=="0"){
+  obj.sec++
+  sec.innerText=obj.sec%60
+  if(sec.innerText=="0"){
+   obj.min++
+   min.innerText=obj.min
+}   
+}
+
+   },10)
+}
+
+
+   
+  
+function start(){
+if(startTimer===false){
+    timer()
+       startTimer=true
+       timeStop=false
+}
+        
+  
+}
+function puse(){
+    
+    clearInterval(setTimer)
+    startTimer=false
+    timeStop=true;
+    ;
+}
+function reset(){
+    if(timeStop===true){
+        obj.sec=0
+        obj.milisec=0
+        obj.min=0
+        milisec.innerText="00"
+        sec.innerText="00"
+        min.innerText="00"
+    }
+}
+</script>
+</html>
