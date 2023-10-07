@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent{
+            display: flex;
+        }
+        #buttons>button{
+            margin-top: 80px;
+            width: 100px;
+           background-color: aqua;
+        }
+         #cont{
+            width: 600px;
+           
+         }
+        #cont>img{
+             width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+    <div id="cont">
+       <img src="https://i.ytimg.com/vi/Qku4znjhMfw/maxresdefault.jpg" >
+       <img src="https://lh3.googleusercontent.com/iZZtYl9QQzwjUy6HbxSbwC1_HtB4l3EP-cqlJ4z3ITTjxLc-_RcvCyZ4ZNxWph2ysRgF" >
+       <img src="https://i.pinimg.com/originals/26/f6/14/26f614734a773cba2a845729613e68d7.jpg" >
+       <img src="https://hindugodwallpaper.com/images/gods/zoom/3768_varaha-avatar-hd-wallpaper.jpg" >
+       <img src="https://1.bp.blogspot.com/-P5Q3rnVL10Q/X0DwyfU7b4I/AAAAAAAAAH8/j_owuTUex7sbJ-Rx1c_lyrs_ylGGcd0LwCLcBGAsYHQ/s1600/6.jpg" >
+       <img src="https://www.hindutsav.com/wp-content/uploads/2020/11/vamana-avatar.jpg" >
+       <img src="https://wallpapercave.com/wp/wp7420738.jpg" >
+       <img src="https://i.pinimg.com/originals/56/4a/71/564a71e54929db81ebafd3cf029b1bef.jpg" >
+       <img src= "https://i.pinimg.com/originals/0b/bf/70/0bbf7018350a331af8a17d850310ffdb.jpg" > 
+       <img src= "https://i.ytimg.com/vi/A8C5WfJvpys/maxresdefault.jpg" > 
+       <img src= "https://wallpapercave.com/wp/wp9454923.jpg" > 
+       <img src= "https://i.ytimg.com/vi/Oy-U5E7TToo/maxresdefault.jpg" > 
+       <img src= "https://lh6.googleusercontent.com/-ZZBjYcbknPY/TXkLf-f1_WI/AAAAAAAAChk/Sfc4TJ6AlxU/s1600/god+ram+laxman+sita+%2526+hanuman.jpg" > 
+       <img src= "https://wallpapercave.com/wp/wp3761212.jpg" > 
+       <img src= "https://wallpapercave.com/wp/wp9495377.jpg" > 
+       <img src= "https://techuloid.com/wp-content/uploads/2018/05/Images-of-Radha-and-Krishna.jpg" > 
+       <img src= "https://www.shutterstock.com/shutterstock/photos/2325432493/display_1500/stock-photo-khatu-shyam-ji-hd-photos-2325432493.jpg" > 
+       <img src= "https://www.bhagwankiphoto.com/wp-content/uploads/2021/07/Godhood-Venkateswara-Swamy-Images-Photos-Free-Download-797x1024.jpg" > 
+       <img src= "https://wallpapercave.com/wp/wp9454994.jpg" > 
+       <img src= "https://wallpapercave.com/wp/wp4521601.jpg" > 
+       
+    </div>
+    <div id="buttons">
+    <button onclick="toggle()">Start/Stop</button>
+    <button onclick="next()">Next</button>
+    <button onclick="previous()">Previous</button>
+    </div>
+</div>
+</body>
+<script>
+    let cont=document.getElementById("cont")
+    let pic=document.querySelectorAll("#cont>img")
+    let SlideIndex=0;
+    let interval;
+    let time =true;
+    console.log(pic.length)
+    function showImg(index){
+        pic.forEach((ele,i)=>{
+            if(i==index){
+                ele.style.display="block"
+            }
+            else{
+                ele.style.display="none"
+            }
+        })
+    }
+    function startSlideshow(){
+        interval=setInterval(()=>{
+            SlideIndex=(SlideIndex+1)%pic.length
+           showImg(SlideIndex)
+        },2100)
+    }
+    function stopSlideshow(){
+        clearInterval(interval)
+    }
+    function toggle(){
+     if(time===true){
+        startSlideshow()
+        time= false;
+     }
+    else{
+        stopSlideshow()
+        time=true
+    }
+    }
+    function next(){
+        stopSlideshow()
+        SlideIndex=(SlideIndex+1)%pic.length
+           showImg(SlideIndex)
+           time=true
+    }
+    function previous(){
+        stopSlideshow()
+        if(SlideIndex==0){
+            SlideIndex=pic.length-1
+        }
+        else{
+            SlideIndex=(SlideIndex-1)%pic.length
+        }
+           showImg(SlideIndex)
+           time=true
+    }
+    showImg(SlideIndex)
+</script>
+</html>
