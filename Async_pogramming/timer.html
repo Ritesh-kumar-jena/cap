@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #display{
+        display: flex;
+        justify-content: center;
+    }
+    #display>div{
+        font-size: 50px ;
+        font-weight: bold;
+    }
+    #value{
+        display: flex;
+        justify-content: center;
+    }
+    #value>input{
+        width: 90px;
+        margin-top: 30px;
+        
+    }
+    #value>button{
+        width: 100px;
+        margin-top: 30px;
+        background-color: aqua;
+    }
+    #action{
+        display: flex;
+        justify-content: center;
+    }
+    #action>button{
+        width: 100px;
+        background-color: aqua;
+    }
+    </style>
+  
+</head>
+<body>
+    <div>
+        <div id="value">
+          <input id="hour" type="number" placeholder="Enter-hours">
+          <input  id="minute" type="number" placeholder="Enter-Min">
+          <input id="second" type="number" placeholder="Enter-Sec">
+          <button onclick="enter()">Click-Enter</button>
+          
+        </div>
+        <div id="display">
+            <div id="hr">00</div>
+            <div>.</div>
+            <div id="min">00</div>
+            <div>.</div>
+            <div id="sec">00</div>
+            
+        </div>
+        <div id="action">
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+</body>
+<script>
+    let hr=document.getElementById("hr")
+    let min=document.getElementById("min")
+    let sec=document.getElementById("sec")
+    let hour=document.getElementById("hour")
+    let seconds=document.getElementById("second")
+    let minute=document.getElementById("minute")
+    let hrMin=true;
+    let time;
+    let enterTime=true;
+ let obj={}
+ obj.hr;
+ obj.min;
+ obj.sec;
+ function timeRule(){
+    if(seconds.value===""){
+        alert("plz enter sec to start the timer")
+    }
+    else if(+seconds.value>59){
+        alert("sec input should not be geter(>) than : 59")
+    }
+    else if(+minute.value>59){
+        alert("min input should not be geter(>) than : 59")
+    }
+    else if(+hour.value>23){
+        alert("hours input should not be geter(>) than : 23")
+    }
+   else if(minute.value===""&&seconds.value==="0"){
+        
+        alert("plz enter valid second input(0>)")
+    }
+    else if(hour.value===""&& minute.value==="0"&&seconds.value==="0"){
+        
+       alert("plz enter valid  input")
+    }
+    else if( hour.value!==""&&minute.value===""&&seconds.value!==""){
+        
+        alert("plz enter valid min input")
+    }
+    else if( hour.value==="0"&&minute.value==="0"&&seconds.value==="0"){
+        
+        alert("plz enter valid  input")
+    }
+    else if(hour.value!==""){
+      // hrMin=false
+      obj.hr=+hour.value
+      hr.innerText=obj.hr
+      obj.sec=+seconds.value
+        sec.innerText=obj.sec
+        obj.min=+minute.value
+       min.innerText=obj.min
+    }
+       
+      
+     else if(minute.value!==""){
+      
+      obj.min=+minute.value
+       min.innerText=obj.min
+       obj.sec=+seconds.value
+        sec.innerText=obj.sec
+    }
+    else{
+        obj.sec=+seconds.value
+        sec.innerText=obj.sec
+        hour.value=""
+        minute.value=""
+        seconds.value=""
+    }
+    
+ }
+ function startTimer(){
+    
+      time=setInterval(()=>{
+        if( obj.min!==0 &&obj.min!==undefined&&obj.sec<60||obj.hr===undefined&& obj.min===0&&obj.sec!==0|| obj.min===undefined&&obj.sec!==0||obj.hr!==undefined&& obj.min===0&&obj.sec!==0){
+            obj.sec--
+            sec.innerText=obj.sec  
+          }
+        if(obj.min!==undefined&&obj.sec<0){
+            obj.sec=60
+            obj.sec--
+            sec.innerText=obj.sec
+           
+        }
+        if(obj.hr===undefined && obj.min!==undefined&&obj.sec===59||obj.hr===undefined&&obj.min!==0&&obj.sec===59){ 
+           
+            obj.min--
+            min.innerText=obj.min
+        }
+          if(obj.hr>0&&obj.min===0&&obj.sec===0){
+            obj.sec--
+            if(obj.sec===0){
+            sec.innerText=obj.sec
+            obj.min--
+            min.innerText=obj.min
+            }
+          } 
+         
+        
+       if(obj.hr!==undefined&&obj.min<60&&obj.sec===59){
+        obj.min--
+            min.innerText=obj.min
+       }
+       if(obj.hr!==undefined&&obj.min<0){
+        obj.min=60
+        obj.min--
+            min.innerText=obj.min
+       }
+       if(obj.hr!==undefined&&obj.hr!==0&&obj.min===59){
+        obj.hr--
+        hr.innerText=obj.hr
+       }
+    },1000)
+ }
+ 
+ function enter(){
+    if(enterTime===true){
+   if(obj.min!==undefined||obj.sec!==60) {
+        timeRule()
+        hour.value="";
+        minute.value="";
+        seconds.value="";
+
+    }
+    else{
+        alert("plz enter valid second input(0>)")
+    }
+}
+else{
+    alert("plz click reset button")
+}
+ }
+
+ function start(){
+    if(hrMin===true){
+        startTimer()
+        hrMin=false;
+        enterTime=false;
+        
+    }
+ }
+ function pause(){
+    clearInterval(time)
+    hrMin=true
+ }
+ function reset(){
+    clearInterval(time)
+    hrMin=true
+    obj.min=undefined;
+    obj.sec=undefined;
+    obj.hr=undefined;
+    min.innerText="00"
+    sec.innerText="00"
+    hr.innerText="00"
+    enterTime=true;
+ }
+</script>
+</html>
