@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+           
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: auto;
+           
+            
+        }
+       #showMenu{
+        display: block;
+       }
+       
+        .manu{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+           
+        }
+       
+
+        h1, h2 {
+            text-align: center;
+            background-color:red;
+            color: yellow;
+        }​
+        
+        .food-item{
+            margin: 10px 0px;
+        }
+        
+        .food-item>img{
+            width: 90%;
+            height: 80%;
+            display: block;
+          margin-bottom: 10px;
+          
+        }
+        
+        .food-item label {
+            margin-left: 10px;
+        }
+        button{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #d91e18;
+            color: #ffffff;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover{
+            background-color: #c41210;
+        }
+        #order-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #d91e18;
+            color: #ffffff;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        #order-btn:hover {
+            background-color: #c41210;
+        }
+
+        #orderCompleted {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #b19a9ad1;
+            padding: 20px;
+            border: 1px solid #d6e9c6;
+            display: none;
+        }
+        .show{
+            display: none;
+        }
+        
+       .order-food{
+             display: flex;
+             justify-content: space-around;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+       } 
+
+        .foodImg{
+            width: 100px;
+            height: 100px;
+        }
+       .order-food>label{
+        color: red;
+        font-weight: bold;
+        margin-top: 50px;
+       }
+       #number{
+        text-align: right;
+        font-weight: bold;
+        color: red;
+       }
+       #total{
+        color: red;
+        background-color: yellow;
+        display: inline;
+        margin-left: 250px;
+       }
+       #loadingSpinner{
+        width: 500px;
+        height: 500px;
+        display: none;
+        text-align: center;
+        font-weight: bold;
+        background-image: url(https://cdn.dribbble.com/users/645440/screenshots/3266490/loader-2_food.gif);
+        background-size: cover;
+       }
+       #loading{
+        color: red;
+        background-color: yellow;
+        display: inline;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="showMenu">
+            <h1>McDonald's Menu</h1>
+            <div class="manu">
+                <div class="food-item" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"  >
+                    <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2021/01/mcdonalds-mcplant.jpg" alt="Burger" class="food-image">
+                    <input type="checkbox" id="burger" name="burger">
+                    <label for="burger">Burger</label>
+                    <label for="burger">201 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" >
+                    <img src="https://foodsided.com/wp-content/blogs.dir/306/files/2018/07/8932_MediumFries.jpg" alt="Fries" class="food-image">
+                    <input type="checkbox" id="Fries" name="Fries">
+                    <label for="Fries">Fries</label>
+                    <label for="Fries">120 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" >
+                    <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG24.png" alt="Coke" class="food-image">
+                    <input type="checkbox" id="Coke" name="Coke">
+                    <label for="Coke">Coke</label>
+                    <label for="Coke">85 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://getwallpapers.com/wallpaper/full/6/8/3/773316-top-donuts-wallpapers-2048x1152-for-meizu.jpg" alt="Doughnut" class="food-image">
+                    <input type="checkbox" id="Doughnut" name="Doughnut">
+                    <label for="Doughnut">Doughnut</label>
+                    <label for="Doughnut">120 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://hungrylankan.com/wp-content/uploads/2020/05/kochchicheese_rolls3-scaled.jpg" alt="Chicken rool" class="food-image">
+                    <input type="checkbox" id="Chicken rool" name="Chicken rool">
+                    <label for="Chicken rool">Chicken rool</label>
+                    <label for="Chicken rool">150 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://images6.alphacoders.com/868/thumb-1920-868514.jpg" alt="Sandwich" class="food-image">
+                    <input type="checkbox" id="Sandwich" name="Sandwich">
+                    <label for="Sandwich">Sandwich</label>
+                    <label for="Sandwich">80 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://images7.alphacoders.com/816/816665.jpg" alt="Hot dog" class="food-image">
+                    <input type="checkbox" id="Hot dog" name="Hot dog">
+                    <label for="Hot dog">Hot dog</label>
+                    <label for="Hot dog">99 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://www.diyetasistan.com/files/besinler/iced-tea.jpg" alt="Ice Tea" class="food-image">
+                    <input type="checkbox" id="Ice Tea" name="Ice Tea">
+                    <label for="Ice Tea">Ice Tea</label>
+                    <label for="Ice Tea">110 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://i.ytimg.com/vi/BEU-yt_MTgc/maxresdefault.jpg" alt="Chicken cutlet" class="food-image">
+                    <input type="checkbox" id="Chicken cutlet" name="Chicken cutlet">
+                    <label for="Chicken cutlet">Chicken cutlet</label>
+                    <label for="Chicken cutlet">180 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.k7rM_CI8jYnJ_pyIwUYoRwHaFj&pid=Api&P=0&h=180" alt="Black cofee" class="food-image">
+                    <input type="checkbox" id="Black cofee" name="Black cofee">
+                    <label for="Black cofee">Black cofee</label>
+                    <label for="Black cofee">130 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://comecarne.org/wp-content/uploads/2011/04/Depositphotos_26336543_xl-2015-scaled.jpg" alt="Hot cake" class="food-image">
+                    <input type="checkbox" id="Hot cake" name="Hot cake">
+                    <label for="Hot cake">Hot cake</label>
+                    <label for="Hot cake">90 Rs</label>
+                </div>
+                <div class="food-item" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <img src="https://www.mcdonalds.com.my/storage/articles/d5205dd3650dbd455f02f031c30cd9cb.jpg" alt="Ayam Goreng" class="food-image">
+                    <input type="checkbox" id="Ayam Goreng" name="Ayam Goreng">
+                    <label for="Ayam Goreng">Ayam Goreng</label>
+                    <label for="Ayam Goreng">280 Rs</label>
+                    
+                </div>
+            </div>
+                 <button>Order-Food</button>
+        </div>
+        <div id="orderCompleted">
+            <h2>Order Completed!</h2>
+            <p id="number">Your Order ID: #<span id="order-number"></span></p>
+            <div class="show">
+                <div class="order-food"  >
+                    <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2021/01/mcdonalds-mcplant.jpg" alt="Burger" class="foodImg">
+                    <label for="burger">Burger</label>
+                    <label class="price" for="burger">201</label>
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food"  >
+                    <img src="https://foodsided.com/wp-content/blogs.dir/306/files/2018/07/8932_MediumFries.jpg" alt="Fries" class="foodImg">
+                    <label for="Fries">Fries</label>
+                    <label class="price" for="Fries">120</label>
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food"  >
+                    <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG24.png" alt="Coke" class="foodImg">
+                    <label for="Coke">Coke</label>
+                    <label class="price" for="Coke">85</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://getwallpapers.com/wallpaper/full/6/8/3/773316-top-donuts-wallpapers-2048x1152-for-meizu.jpg" alt="Doughnut" class="foodImg">
+                    <label for="Doughnut">Doughnut</label>
+                    <label class="price" for="Doughnut">120</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://hungrylankan.com/wp-content/uploads/2020/05/kochchicheese_rolls3-scaled.jpg" alt="Chicken rool" class="foodImg">
+                    <label for="Chicken rool">Chicken rool</label>
+                    <label class="price" for="Chicken rool">150</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://images6.alphacoders.com/868/thumb-1920-868514.jpg" alt="Sandwich" class="foodImg">
+                    <label for="Sandwich">Sandwich</label>
+                    <label class="price" for="Sandwich">80</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://images7.alphacoders.com/816/816665.jpg" alt="Hot dog" class="foodImg">
+                    <label for="Hot dog">Hot dog</label>
+                    <label  class="price" for="Hot dog">99</label>
+
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://www.diyetasistan.com/files/besinler/iced-tea.jpg" alt="Ice Tea" class="foodImg">
+                    <label for="Ice Tea">Ice Tea</label>
+                    <label  class="price" for="Ice Tea">110</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://i.ytimg.com/vi/BEU-yt_MTgc/maxresdefault.jpg" alt="Chicken cutlet" class="foodImg">
+                    <label for="Chicken cutlet">Chicken cutlet</label>
+                    <label class="price" for="Chicken cutlet">180</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.k7rM_CI8jYnJ_pyIwUYoRwHaFj&pid=Api&P=0&h=180" alt="Black cofee" class="foodImg">
+                    <label for="Black cofee">Black cofee</label>
+                    <label class="price" for="Black cofee">130</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://comecarne.org/wp-content/uploads/2011/04/Depositphotos_26336543_xl-2015-scaled.jpg" alt="Hot cake" class="foodImg">
+                    <label for="Hot cake">Hot cake</label>
+                    <label class="price" for="Hot cake">90</label>
+                    
+                </div>
+            </div>
+            <div class="show">
+                <div class="order-food" >
+                    <img src="https://www.mcdonalds.com.my/storage/articles/d5205dd3650dbd455f02f031c30cd9cb.jpg" alt="Ayam Goreng" class="foodImg">
+                    <label for="Ayam Goreng">Ayam Goreng</label>
+                    <label class="price" for="Ayam Goreng">280</label>
+                    
+                </div>
+            </div>
+            <h3 id="total"></h3> 
+            
+        </div>
+        <div id="loadingSpinner">
+            <h3 id="loading">Your order is processing plz wait........</h3>
+        </div>
+</body>
+<script>
+let price=document.querySelectorAll(".price")
+let orderFood=document.querySelectorAll(".show")
+let foodItem=document.querySelectorAll("input")
+let total=document.getElementById("total")
+let oderID=document.getElementById("order-number")
+let press=document.querySelector("button")
+let showorder=document.getElementById("orderCompleted")
+let loadingSpinner=document.getElementById("loadingSpinner")
+let showMenu=document.getElementById("showMenu")
+let timer;
+let sum=0;
+let itemOrder=false;
+function showMyOrder(index){
+    orderFood.forEach((ele,i)=>{
+        if(i===index){
+            ele.style.display="block"
+        }
+      
+    })
+}   
+
+
+ 
+  press.addEventListener("click",function(){
+    foodItem.forEach((ele)=>{
+     if(ele.checked===true){
+       itemOrder=true
+     }
+ })
+    if(itemOrder===true){
+        let time= Math.floor(Math.random()*(8000-5000+1))+5000;
+  oderID.innerText=  Math.floor(Math.random()*(4000-3000+1))+3000;
+  showMenu.style.display="none"
+  loadingSpinner.style.display="block"
+    timer=setTimeout(()=>{
+    new Promise((resolve, reject) => {
+        loadingSpinner.style.display="none"
+        showorder.style.display="block"  
+        foodItem.forEach((ele,i)=>{
+    if(ele.checked===true){
+        showMyOrder(i)
+     sum+= Number(price[i].innerText)
+     
+    }
+   })
+   resolve(`Your Total Amount is :- ${sum} Rs`)
+   
+    }).then(res=>{
+       total.innerText= res
+    })
+    },time)
+    }
+ else{
+    alert("plz order at list 1 item ")
+ }
+  
+  })
+</script>
+</html>
