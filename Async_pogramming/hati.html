@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #cont{
+         #cont{
             display: flex;
         }
         #cont>div{
@@ -22,15 +22,15 @@
         <div>.</div>
         <div id="milisec">00</div>
     </div>
-    
+
     <button onclick="start()">start</button>
     <button onclick="puse()">puse</button>
     <button onclick="reset()">reset</button>
     <h2></h2>
-   
+
 </body>
 <script>
-let cont=document.getElementById("cont")
+    let cont=document.getElementById("cont")
 let milisec= document.getElementById("milisec")
 let sec= document.getElementById("sec")
 let min= document.getElementById("min")
@@ -58,19 +58,19 @@ if(milisec.innerText=="0"){
 }
 
 
-   
-  
+
+
 function start(){
 if(startTimer===false){
     timer()
        startTimer=true
        timeStop=false
 }
-        
-  
+
+
 }
 function puse(){
-    
+
     clearInterval(setTimer)
     startTimer=false
     timeStop=true;
