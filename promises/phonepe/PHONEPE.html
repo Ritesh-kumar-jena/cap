@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+           
+           background-color:white;
+           padding: 20px;
+       }
+
+       #container {
+           max-width: 600px;
+           background-color: white;
+           padding: 20px;
+           
+           margin: auto;
+          
+           
+       }
+       #logoImg{
+        width: 90%;
+        height: 220px;
+        border: 3px solid blueviolet;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        
+       
+       }
+       #logo{
+        width: 95%;
+        height: 200px;
+        margin-left: 15px;
+        margin-top: 10px;
+       }
+       #figur{
+        width: 90%;
+        height: 500px ;
+        margin-top: 10px;
+        background-color:blueviolet;
+       }
+       input{
+        margin-top: 20px;
+        margin-left: 20px;
+       }
+       button{
+        color: blueviolet;
+       }
+       button:hover{
+           background-color: blueviolet;
+           color: white;
+           font-weight: bold;
+       }
+       #successful{
+        width: 100%;
+        height: 200px;
+         margin-top: 80px;
+         background-color: white;
+         display: none;
+       }
+       #loadingSpinner{
+        width: 90px;
+        height: 90px;
+        margin-top: 40px;
+          margin-left: 40%;
+        display: none;
+        background-image: url(https://s3.eu-central-1.amazonaws.com/bersling/images/spinner3.gif);
+        background-size: cover;
+       }
+       #transactionSuccessful{
+        width: 90px;
+        height: 90px;
+          margin-top: 40px;
+          margin-left: 45%;
+          display: none;
+       }
+       #success{
+        font-weight: bold;
+        text-align: center;
+       }
+      
+       #transactionFailed{
+        display: none;
+        width: 90px;
+        height: 90px;
+          margin-top: 40px;
+          margin-left: 45%;
+        
+       }
+      
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="logoImg">
+            <img src="https://thetechportal.com/wp-content/uploads/2020/01/phonepe-logo-800x430.jpg" id="logo" alt="logo"> 
+        </div>
+       
+       <div id="figur">
+        <input type="number">
+        <button>pay</button>
+
+            <div id="successful">
+                <div id="loadingSpinner"></div>
+                <img src="http://clipart-library.com/new_gallery/131-1314108_validation-circle-green-check-png.png" alt="sucess" id="transactionSuccessful">
+                <img src="http://www.pngall.com/wp-content/uploads/4/Red-Close-Button-Transparent.png" alt="failed" id="transactionFailed">
+                <h2 id="success"></h2>
+        </div>
+       </div>
+    </div>
+</body>
+<script>
+  let figur=document.getElementById("figur")
+  let input=document.querySelector("input")
+  let button=document.querySelector("button")
+  let showUI=document.getElementById("successful")
+  let loadingSpinner=document.getElementById("loadingSpinner")
+  let transactionSuccessful=document.getElementById("transactionSuccessful")
+  let transactionFailed=document.getElementById("transactionFailed")
+  let massage=document.getElementById("success")
+  let rightAmount=true;
+  let price=10000;
+  let time;
+  function loading(){
+    showUI.style.display="block"
+    transactionFailed.style.display="none"
+    transactionSuccessful.style.display="none"
+   figur.style.backgroundColor="orangered"
+   loadingSpinner.style.display="inline-block"
+   massage.style.color="orangered"
+   massage.innerText="Payment Processing...."
+  }
+  function TransactionSuccess(){
+    time=setTimeout(()=>{
+      new Promise((resolve, reject) => {
+        showUI.style.display="block"
+        loadingSpinner.style.display="none"
+        figur.style.backgroundColor="green"
+        transactionSuccessful.style.display="inline"
+        massage.style.color="green"
+        resolve(`Transaction Successful ${input.value}/-Rs `)
+      }).then(res=>{
+        massage.innerText=res
+      })
+    },4000)
+  }
+  function Transactionfail(){
+    time=setTimeout(()=>{
+      new Promise((resolve, reject) => {
+        showUI.style.display="block"
+        loadingSpinner.style.display="none"
+        figur.style.backgroundColor="red"
+        transactionFailed.style.display="inline"
+        massage.style.color="red"
+        resolve("Transaction Faild! ")
+      }).then(res=>{
+        massage.innerText=res
+      })
+    },4000)
+  }
+  button.addEventListener("click",function(){
+    if(input.value[0]=="-" ||input.value=="" ){
+       rightAmount=false
+    }
+    else{
+        rightAmount=true
+    }
+  
+    
+    if(rightAmount===true){
+        loading()
+       if(input.value<=price){
+        TransactionSuccess()
+       }
+       else{
+        Transactionfail()
+       }
+    }
+   else{
+    alert("please enter amount (in rupees)")
+   }
+  })
+</script>
+</html>
