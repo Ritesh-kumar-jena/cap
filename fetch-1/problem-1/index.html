@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+           
+           background-color: #f7f7f7;
+           padding: 20px;
+       }
+
+       #container {
+           max-width: 600px;
+           background-color: #ffffff;
+           padding: 20px;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           margin: auto;    
+       }
+       form {
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 30%;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 30px;
+        }
+        #data{
+            display: flex;
+            justify-content: space-around;
+        }
+        label {
+            font-size: 20px;
+            color: aqua;
+        }
+        #name{
+            margin-bottom: 10px;
+             width: 100%;
+             padding: 12px;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+             box-sizing: border-box;
+             resize: vertical;
+        }
+        #age{
+            width: 100%;
+             padding: 12px;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+             box-sizing: border-box;
+             resize: vertical;
+        }
+        input[type="submit"] {
+             background-color: #2b619e;
+             color: white;
+             padding: 10px 10px;
+             border: none;
+             border-radius: 20px;
+             cursor: pointer;
+             width: 80%;
+             font-size: 20px;
+             margin-top: 20px;
+       }
+
+    input[type="submit"]:hover {
+        background-color: #3973b6;
+   }
+   button{
+    color: red;
+    margin-left: 250px;
+    margin-top: 20px;
+   }
+  button:hover{
+    color: white;
+    font-weight: bold;
+    background-color: red;
+  }
+  table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #8caacf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0468aa;
+  color: white;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="data">
+            <form >
+                <label for="name">User's Name</label>
+                <input  type="text" placeholder="Type Name" id="name">
+                <label for="age">Age</label>
+                <input type="number" placeholder="Type Age" id="age">
+                <input type="submit">
+               </form>
+        </div>
+           <button>Show Data</button>
+           <div id="Show-data">
+               <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+               </table>
+           </div>
+              
+            
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
