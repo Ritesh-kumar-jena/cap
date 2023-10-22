@@ -10,25 +10,25 @@
 }
 #body{
             width: 100%;
-            height:100vh;
+            height:100%;
             background-image: url(https://cdn.wallpapersafari.com/29/86/zTAp74.gif);
              background-size: cover;  
-             display: flex; 
-             justify-content: space-around;
+             display: flex;
+             justify-content: space-between;
 }
 #container {
   width: 500px;
   display: flex;
   justify-content: space-around;
 }
-#container>#data h3,p {
+#container>div h3,p {
             color: red;
             display: inline-block;
             background-color: yellow;
             margin-left: 20px;
-            margin-bottom: 0.2px;
+            margin-bottom: 0.1px;
         }
- #container>#data span{
+ #container>div span{
   width: 100px;
   height: 100px;
     color: blue;
@@ -40,7 +40,7 @@
   background-color: red;
 }
  button{
-  margin-left: 50px;
+  margin-right: 150px;
   margin-top: 200px;
  }
  button:hover{
@@ -53,14 +53,20 @@
  #search>a{
   color:yellow;
  }
+ label{
+  color: white;
+  font-weight: bold;
+ }
     </style>
 </head>
 <body>
     <div id="body">
       <div id="container"></div>
       <div id="click">
-        <button id="home"><a href="index.html">HOME Page</a></button>
+        <label for="search">click here=></label>
         <button id="search"><a href="movieSearchpage.html">Movie Search Page</a></button>
+        <label for="home">click here=></label>
+        <button id="home"><a href="index.html">HOME Page</a></button>
       </div>
     </div>
    
@@ -76,8 +82,8 @@ let apiID ="e2ccd074"
   .then(res=>res.json())
   .then(moviDetails=>{
    output+=`<img src="${moviDetails.Poster}" alt="">
-     <div id"data">
-          <h3>Title :    <span> ${moviDetails.Title}</span></h3>
+     <div>
+          <h3>Title :<span> ${moviDetails.Title}</span></h3>
           <p>Language : <span> ${moviDetails.Language} </span></p>
           <p> Actors: <span> ${moviDetails.Actors} </span></p>
           <p>Writer : <span> ${moviDetails.Writer} </span></p>
