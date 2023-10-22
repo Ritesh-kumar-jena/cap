@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <style>
+    body {
+  font-family: sans-serif;
+}
+#body{
+            width: 100%;
+            height:100vh;
+            background-image: url(https://cdn.wallpapersafari.com/29/86/zTAp74.gif);
+             background-size: cover;   
+}
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: rgb(255, 0, 255);
+}
+
+form {
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  background-color: #e30f0f;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+}
+button:hover{
+    background-color: red;
+    font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+    <div id="body">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <input id="name" type="text" name="name" placeholder="Name" required>
+      <input id="email" type="email" name="email" placeholder="Email" required>
+      <input id="password" type="password" name="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+</body>
+<script>
+let name=document.getElementById("name")
+let email=document.getElementById("email")
+let password=document.getElementById("password")
+let myfrom=document.getElementById("signup-form")
+
+myfrom.addEventListener("submit",function(ele){
+    ele.preventDefault()
+    localStorage.setItem("name",name.value)
+    localStorage.setItem("email",email.value)
+    localStorage.setItem("password",password.value)
+   
+   window.location.href='index.html'
+})
+</script>
+</html>

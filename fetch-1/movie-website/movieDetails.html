@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body {
+  font-family: sans-serif;
+}
+#body{
+            width: 100%;
+            height:100vh;
+            background-image: url(https://cdn.wallpapersafari.com/29/86/zTAp74.gif);
+             background-size: cover;   
+}
+#container {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+#container>div h3,p {
+            color: red;
+            display: inline-block;
+            background-color: yellow;
+            margin-left: 20px;
+            margin-bottom: 0.2px;
+        }
+ #container>div span{
+    color: blue;
+ }
+    </style>
+</head>
+<body>
+    <div id="body">
+      <div id="container">
+
+      </div>
+    </div>
+
+       
+</body>
+<script>
+    let output=""
+    let container=document.getElementById("container")
+let apiID ="e2ccd074"
+ let ImdbID= localStorage.getItem("imdbID")
+ console.log("imdbid : ",ImdbID)
+  fetch("http://www.omdbapi.com/?apikey=" +apiID+"&i="+ImdbID)
+  .then(res=>res.json())
+  .then(moviDetails=>{
+   output+=`<img src="${moviDetails.Poster}" alt="">
+     <div>
+          <h3>Title :    <span> ${moviDetails.Title}</span></h3>
+          <p>Language : <span> ${moviDetails.Language} </span></p>
+          <p> Actors: <span> ${moviDetails.Actors} </span></p>
+          <p>Writer : <span> ${moviDetails.Writer} </span></p>
+          <p> Director : <span> ${moviDetails.Director} </span></p>
+          <p>Genre : <span> ${moviDetails.Genre} </span></p>
+          <p>Runtime : <span> ${moviDetails.Runtime} </span></p>
+          <p>Released Date : <span> ${moviDetails.Released} </span></p>
+          <p>BoxOffice Collection : <span> ${moviDetails.BoxOffice } </span></p>
+          <p>Plot : <span> ${moviDetails.Plot} </span></p>
+          <p>Awards : <span> ${moviDetails.Awards} </span></p>
+          <p>imdbID : <span> ${moviDetails.imdbID} </span></p>
+          <p>imdbRating :  <span> ${moviDetails.imdbRating} </span></p>
+        </div>`
+
+          container.innerHTML=output
+
+  }).catch(error=>{
+     console.log(error.massage)
+  })
+ 
+ 
+  
+
+</script>
+</html>
