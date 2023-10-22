@@ -12,32 +12,58 @@
             width: 100%;
             height:100vh;
             background-image: url(https://cdn.wallpapersafari.com/29/86/zTAp74.gif);
-             background-size: cover;   
+             background-size: cover;  
+             display: flex; 
+             justify-content: space-around;
 }
 #container {
   width: 500px;
   display: flex;
   justify-content: space-around;
 }
-#container>div h3,p {
+#container>#data h3,p {
             color: red;
             display: inline-block;
             background-color: yellow;
             margin-left: 20px;
             margin-bottom: 0.2px;
         }
- #container>div span{
+ #container>#data span{
+  width: 100px;
+  height: 100px;
     color: blue;
+ }
+#home{
+  background-color:yellow;
+}
+#search{
+  background-color: red;
+}
+ button{
+  margin-left: 50px;
+  margin-top: 200px;
+ }
+ button:hover{
+  font-weight: bold;
+
+ }
+ #home>a{
+  color:red;
+ }
+ #search>a{
+  color:yellow;
  }
     </style>
 </head>
 <body>
     <div id="body">
-      <div id="container">
-
+      <div id="container"></div>
+      <div id="click">
+        <button id="home"><a href="index.html">HOME Page</a></button>
+        <button id="search"><a href="movieSearchpage.html">Movie Search Page</a></button>
       </div>
     </div>
-
+   
        
 </body>
 <script>
@@ -50,7 +76,7 @@ let apiID ="e2ccd074"
   .then(res=>res.json())
   .then(moviDetails=>{
    output+=`<img src="${moviDetails.Poster}" alt="">
-     <div>
+     <div id"data">
           <h3>Title :    <span> ${moviDetails.Title}</span></h3>
           <p>Language : <span> ${moviDetails.Language} </span></p>
           <p> Actors: <span> ${moviDetails.Actors} </span></p>
@@ -64,7 +90,8 @@ let apiID ="e2ccd074"
           <p>Awards : <span> ${moviDetails.Awards} </span></p>
           <p>imdbID : <span> ${moviDetails.imdbID} </span></p>
           <p>imdbRating :  <span> ${moviDetails.imdbRating} </span></p>
-        </div>`
+        </div>
+        `
 
           container.innerHTML=output
 
