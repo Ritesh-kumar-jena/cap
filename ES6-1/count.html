@@ -48,8 +48,7 @@
 <script>
     let display=document.querySelector("h1")
     count=0;
-    countDown=true
-    let decrementMax=false;
+    countDown=false;
     let time;
     let timer=()=>{
         time=setInterval(()=>{
@@ -82,10 +81,7 @@
    let decrement=()=>{
     clearInterval(time)
     countDown=false
-    if(count===0){
-        decrementMax=true
-    }
-    else{
+    if(count!==0){
         count--
     display.innerText=count
     }
