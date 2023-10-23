@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+           
+           background-color: #f7f7f7;
+           padding: 20px;
+       }
+
+       #container {
+           max-width: 600px;
+           background-color: #ffffff;
+           padding: 20px;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           margin: auto;
+          
+           
+       }
+       #function{
+        width: 30%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: auto;
+       }
+       button{
+        margin-left: 40px;
+       }
+       h1{
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 50px;
+       }
+    </style>
+</head>
+<body>
+    <div #container>
+        <div id="function">
+            <h1>0</h1>
+            <button onclick="toggle()">Start/Stop</button>
+            <button onclick="increment()">Increment</button>
+            <button onclick="decrement()">Decrement</button>
+        </div>  
+    </div>
+</body>
+<script>
+    let display=document.querySelector("h1")
+    count=0;
+    countDown=true
+    let decrementMax=false;
+    let time;
+    let timer=()=>{
+        time=setInterval(()=>{
+          count++  
+          display.innerText=count
+        },1000)
+    }
+    let start=()=>{
+        timer()
+        countDown=true
+    }
+   let Stop=()=>{
+    clearInterval(time)
+    countDown=false
+   }
+   let toggle=()=>{
+      if(countDown===false){
+        start()
+      }
+      else{
+        Stop()
+      }
+   }
+   let increment=()=>{
+    clearInterval(time)
+    count++
+    display.innerText=count
+    countDown=false
+   }
+   let decrement=()=>{
+    clearInterval(time)
+    countDown=false
+    if(count===0){
+        decrementMax=true
+    }
+    else{
+        count--
+    display.innerText=count
+    }
+   }
+</script>
+</html>
