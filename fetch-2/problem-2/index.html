@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: monospace;
+            background-color: wheat;
+        }
+        
+        #main{
+            width: 90vw;
+            font-family: monospace;
+            margin: auto;
+            
+        }
+        #searchBar{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(30,33,34);
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        #inputbox{
+            margin-right: 400px;
+            margin-top: 20px;
+        }
+        #menu{
+            display: flex;
+            justify-content: space-between;
+            font-size: 17px;
+            font-weight: bold;
+            background-color: rgb(55,60,62);
+            box-sizing: border-box;
+            padding: 20px;
+            color: aliceblue;
+            border-bottom-left-radius:15px;
+            border-bottom-right-radius:15px;  
+        }
+        #menu>div{
+            color: aliceblue;
+            
+        }
+        #menu>div:hover{
+           background-color:wheat;
+           color: rebeccapurple;
+           font-weight: bold;
+        }
+        #searchBox{
+            border-radius: 5px;
+            border: 1px solid grey;
+            height: 40px;
+            width: 400px;
+            background-color: rgb(19,21,22);
+            box-sizing: border-box;
+            padding: 5px;
+            color: whitesmoke;
+        }
+        #logo{
+            width: 200px;
+            height: 100px;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        #container {
+        
+            width: 70%;
+            margin: auto;
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-evenly;
+            gap: 50px;
+        }
+        #container img {
+           width: 300px;
+           height: 300px;
+
+            margin: auto;
+            transition: 0.2s linear;
+        }
+        #container div {
+            
+            color: white;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius:5px;
+            
+        }
+        #container>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            
+        }
+        #container>div h3,p {
+            margin: 10px;
+            color: black;
+            text-align: center;
+        }
+        #container img:hover {
+            opacity: 50%;
+            margin: auto;
+            transition: 0.2s linear;
+        }
+        a{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="body">
+    <div id="main">
+        <div id="searchBar">
+            <div>
+                <img id="logo" src="https://thumbs.dreamstime.com/b/shop-logo-good-bag-cart-183763553.jpg" alt="">
+            </div>
+
+            <div id="inputbox">
+                <input id="searchBox" type="search" placeholder="What are you looking for ?">
+                <button onclick="showItem()">Search</button>
+                
+            </div>
+        </div>
+        <div id="menu">
+           <div onclick="home()">HOME</div>
+           <div onclick="men()">Men's clothing</div>
+           <div onclick="jewelery()">Jewelery</div>
+           <div onclick="electronics()">electronics</div>
+           <div onclick="women()">women's clothing</div>
+        </div>
+    </div>
+    <div id="container"></div>
+</div>
+</div>
+</body>
+</html>
+<script src="index.js"></script>
