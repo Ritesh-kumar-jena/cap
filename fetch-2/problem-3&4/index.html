@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      body{
+            margin: 0;
+            font-family: monospace;
+            background-color: rgba(255, 255, 255, 0.79);
+        }
+        #Search{
+            background-color: rgb(177, 124, 227);
+            margin-top: 20px;
+            margin-left: 400px;
+          width: 900px;  
+        }
+    #container{
+            width: 95%;
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+    }
+    
+    #pic{
+      width: 700px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 1px  violet;
+    }
+    input[type="search"] {
+    width: 600px;
+    padding: 12px 20px;
+    border: 2px solid violet;
+    margin-left: 10px;
+  border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="search"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+   
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration:wavy;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:50%;
+    background-color: rgb(177, 124, 227);
+}
+#first{
+    background-color: white;
+}
+
+button>span:hover {
+    background-color: white;
+    
+    height: 20px;
+}
+
+#forCast{
+    
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    text-align: center;
+    
+}
+
+#weatherdata{
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #eee;
+}
+#weatherDetails {
+    display: none;
+    width: 100%;
+    height: 350px;
+    
+}
+
+#nameofCity{
+    margin-left: 250px;
+}
+
+#display{
+    display: flex;
+    background-color: rgb(177, 124, 227);
+    margin-bottom: 20px;
+} 
+#display>img{
+    margin-left: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#tag{
+    height: 50px;
+    margin-left: 20px;
+   margin-bottom: 20px;
+    border-top: 1px solid rgb(177, 124, 227);
+    border-bottom: 1px solid rgb(177, 124, 227);
+   
+}
+#tag>div{
+    margin-top: 20px;
+    font-size: 18px;
+}
+.time{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+} 
+.time>div img{
+    max-width: 50px;
+    display: inline;
+    margin-left: 50px;
+}
+#weatherDetails>div p{
+    display: inline;
+} 
+#weatherIcon{
+    max-width: 100px;
+    display: inline;
+}
+
+#weatherDetails p {
+    font-size: 18px;
+   
+}
+
+.forecast-days {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+
+}
+
+.forecast-day {
+    background-color: rgb(177, 124, 227);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 10px;
+    border-radius: 40%;
+    font-weight: bold;
+}
+.forecast-day:hover{
+    border-radius: 50%;
+}
+
+.forecast-icon img {
+    max-width: 70px;
+    display: block;
+    margin: 0 auto 10px;
+}
+.forecast-mintemp{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.forecast-date {
+    margin-bottom: 10px;
+}
+#name{
+    font-weight: bold;
+    color: aqua;
+    margin-top: 55%;
+    margin-left: 400px;
+}
+</style>
+<body>
+    <div id="Search">
+        <input type="search" id="cityInput" placeholder="Enter city...">
+                <button onclick="weather()"><span id="first">S</span><span id="last">earch</span></button>
+    </div>
+   
+    
+        <div id="container">
+            <div id="weatherdata">
+                <h2>Hey!please enter city in search bar.</h2>
+                <div id="weatherDetails">
+                    <div id="nameofCity"><p><span id="cityName"></span>,IN</p></div>
+                    <div id="display">
+                    <img id="weatherIcon" src="" alt="Weather Icon">
+                    <p><span id="Temp"></span></p>
+                    </div>
+                    <div class="time">
+                        <div>
+                           <div> <img src="https://cdn2.iconfinder.com/data/icons/weather-and-seasons-1/110/Icons__cold-512.png" ></div>
+                            <p>Min Temp: <span id="minTemp"></span></p>
+                        </div>
+                        <div>
+                            <div><img src="https://icon-library.com/images/temperature-icon-png/temperature-icon-png-14.jpg" ></div>
+                            <p>Max Temp: <span id="maxTemp"></span></p>
+                        </div>
+                    </div>
+                    <div id="tag">
+                        <div >Feels like : <span id="temp"></span>, Clouds: <span id="clouds"></span>, Wind: <span id="wind"></span>Km/h</div>
+                    </div>
+                    <div class="time">
+                        <div>
+                            <div> <img src="https://cdn.wallpapersafari.com/36/15/gs7zKi.jpg" ></div>
+                            <p>Sunrise: <span id="sunrise"></span></p>
+                        </div>
+                        <div>
+                            <div> <img src="http://2.bp.blogspot.com/-zxYmD2Wb-fs/T-iQEXx7haI/AAAAAAAAEig/X21CDD9G6wk/s1600/Island+Sunset+Wallpapers+3.jpg" ></div>
+                            <p>Sunset: <span id="sunset"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <p id="name">Made by : Ritesh Kumar Jena</p>
+            </div>
+           <div id="pic">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="700" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=India&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <a href="https://embedgooglemap.net/124/">godmothered 123movies</a>
+                    <br><style>.mapouter{position:relative;text-align:right;height:400px;width:700px;}</style>
+                    <a href="https://www.embedgooglemap.net"></a>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:700px;}</style>
+                </div>
+            </div>
+           </div>
+        </div>
+       
+    </div>
+    <div id="forCast"></div>
+    
+        
+    
+</body>
+<script src="index.js"></script>
+</html>
