@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   .container{
+display: flex;
+justify-content: space-around;
+margin-top: 20px;
+
+   }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+<script type="text/babel">
+let root=document.getElementById("root")
+  const Componet=({
+    imageurl,
+    rounded,
+    name,
+    hidename,
+  })=>{
+    return (<div className="Avatars">
+    <img src={imageurl} style={{ width:"200px",height:"200px",border:"5px solid black",borderRadius: rounded ? "50%":"0px"}} />
+    { hidename ? <h1 style={{color: "red",textAlign:"center"}}> {name}</h1> : null}
+  </div>)
+  }
+    function Element(){
+        return (
+            <div className="container"> 
+          <Componet
+        imageurl="https://img.freepik.com/premium-photo/cartoonish-3d-animation-boy-glasses-with-blue-hoodie-orange-shirt_899449-25777.jpg?w=740"
+        rounded={true}
+        name="Rupun"
+        hidename={true}
+        />
+        <Componet
+        imageurl="https://img.freepik.com/premium-photo/cartoon-character-with-blue-vest-vest-that-says-secret-it_771335-48824.jpg?w=740"
+        rounded={true}
+        name="Ritesh"
+        hidename={false}
+        />
+        <Componet
+        imageurl="https://img.freepik.com/free-photo/3d-rendering-cartoon-boy_23-2150797600.jpg?t=st=1699543665~exp=1699547265~hmac=c9f2e3893e1db6d61fdbf29d66d105f1def9832f49192dfc6a6e378b37af3f04&w=740"
+        rounded={false}
+        name="Ritesh"
+        hidename={true}
+        />
+        <Componet
+        imageurl="https://img.freepik.com/free-photo/view-3d-woman_23-2150709984.jpg?t=st=1699552329~exp=1699555929~hmac=bcc3a5f6a2566adba918b9e4b8bc27eadf31e8a9146fb6e049ed2a17ced4a35e&w=740"
+        rounded={false}
+        name="Ritesh"
+        hidename={false}
+        
+        />
+    </div>  )
+    }
+    const reactRoot=ReactDOM.createRoot(root);
+reactRoot.render(<Element/>);
+</script>
+</html>
