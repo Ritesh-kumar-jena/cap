@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .profile{
+        
+        display: flex;
+        justify-content: space-around;
+     }
+     
+     .head>h2{
+        margin-right: 20px;
+        display: inline;
+     }
+     .head>button{
+        font-weight: bold;
+        color: white; 
+        background-color: black;
+     }
+    .skill{
+        display: grid;
+        grid-template-columns: repeat(6,auto);
+        gap: 10px;
+    }
+    .structure{
+        margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="container" style="margin-top: 20%;margin-left: 20%;background-color:whitesmoke;"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+<script type="text/babel">
+let root=document.getElementById("container")
+const Componet=({
+    name,
+avatarurl,
+title,
+skillsets
+})=>{
+    return ( <div className="profile">
+ <div className="structure">
+    <div className="head">
+       <h2>{name}</h2> 
+       <button>Follow</button>
+     </div>
+     <h3>{title}</h3>
+
+    <div className="skill">
+    { skillsets.map((ele)=>(
+        
+        <div style={{borderRadius:"20px",border:"1px  solid gray",height:"30px"}}>
+        <img src={ele.icon} style={{ display: "inline",height:"15px",weidth:"20px",marginRight: "5px",marginLeft: "10px",marginTop:"5px"}}/>
+        <p style={{display: "inline",marginTop:"2px",marginRight: "10px"}}>{ele.description}</p>
+     </div>
+        )) } 
+   
+    </div>
+</div>
+<div>
+<img src={avatarurl} style={{width:"200px",height:"200px",borderRadius: "50%",marginTop:"20px"}}/>
+</div>
+</div>)
+}
+
+function Element(){
+return (<Componet
+         name="Albert Sebastian"
+         avatarurl="https://media.licdn.com/dms/image/C5603AQG28Bh3km2p_w/profile-displayphoto-shrink_800_800/0/1602101081141?e=2147483647&v=beta&t=ZLHDrcF5X-hwmbB1NZeycZdwM5TJELEG-03T9YljLGk"
+         title="Softwear Engineer"
+         skillsets={[{icon:"http://logos-download.com/wp-content/uploads/2016/09/React_logo_logotype_emblem.png",description:"ReactJS"},{icon:"https://cdn.freebiesupply.com/logos/large/2x/nodejs-icon-logo-png-transparent.png",description:"NodeJS"},{icon:"https://cursosdedesarrollo.com/wp-content/uploads/2019/09/1024px-Unofficial_JavaScript_logo_2.svg.png",description:"JavaScript"},{icon:"https://tse2.mm.bing.net/th?id=OIP.Km_m9jrOZV9T6Ik6shbN4QHaHa&pid=Api&P=0&h=180",description:"SQL"},{icon:"https://logos-download.com/wp-content/uploads/2016/10/Python_logo_icon.png",description:"Python"},{icon:"https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg",description:"MongoDB"},{icon:"https://cdn-icons-png.flaticon.com/512/64/64267.png",description:"React Hooks"},{icon:"http://logos-download.com/wp-content/uploads/2016/09/React_logo_logotype_emblem.png",description:"React Native"},]}
+      />)
+}
+
+const reactRoot=ReactDOM.createRoot(root);
+reactRoot.render(<Element/>);
+</script>
+</html>
