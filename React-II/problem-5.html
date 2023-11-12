@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root{
+            margin-top: 20%;
+            margin-left: 40%;
+           
+        }
+        button{
+            background-color: aqua;
+        }
+        button:hover{
+            background-color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</body>
+<script type="text/babel">
+    let root=document.getElementById("root")
+    function Button(props){
+        const handelClick=()=>{
+            console.log(props.name)
+            alert("You clicked Masai!")
+            
+        }
+        return (<button onClick={handelClick}>Click here to print the text in console</button>)
+    }
+    const reactRoot=ReactDOM.createRoot(root);
+reactRoot.render(<Button name="Masai"/>)
+</script>
+</html>
