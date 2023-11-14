@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .componet{
+            margin-top: 20%;
+            margin-left: 40%;
+        }
+        button{
+            background-color: aqua;
+            font-weight: bold;
+            width: 100px;
+        }
+        button:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+<script type="text/babel">
+    let root=document.getElementById("root")
+    
+function Counter(){
+    const setArr=React.useState(0)
+    const count=setArr[0]
+    const setCount=setArr[1]
+    const handelClick=()=>{
+        setCount(count+1)
+    }
+    return (<div className="componet">
+        <h1>Count : {count}</h1>
+        <button onClick={handelClick}>Click me</button>
+    </div>)
+}
+
+    const reactRoot=ReactDOM.createRoot(root);
+reactRoot.render(<Counter/>)
+</script>
+</html>
