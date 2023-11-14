@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .componet{
+            margin-top: 20%;
+            margin-left: 40%;
+            width: 400px;
+        }
+        button{
+            background-color: aqua;
+            font-weight: bold;
+            width: 100px;
+        }
+        button:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+<script type="text/babel">
+    let root=document.getElementById("root")
+    
+function Counter(){
+    const [text,setText]=React.useState("")
+    const handelChange=(event)=>{
+        setText(event.target.value)
+    }
+    const resetText=()=>{
+        setText("")
+    }
+    return (<div className="componet">
+        <input onChange={handelChange} value={text}/>
+        <button onClick={resetText}>Reset</button>
+        <h2>{text}</h2>
+    </div>)
+}
+
+    const reactRoot=ReactDOM.createRoot(root);
+reactRoot.render(<Counter/>)
+</script>
+</html>
