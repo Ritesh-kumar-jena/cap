@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "title": "fetch data",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "title": "get data",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "title": "delete data",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "title": "toggle data",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "title": "get food",
+      "completed": true,
+      "id": 5
+    },
+    {
+      "title": "go home",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "title": "sleep",
+      "completed": true,
+      "id": 7
+    }
+  ]
+}
