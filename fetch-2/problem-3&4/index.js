@@ -8,11 +8,11 @@ async function weather(){
         weatherDetails.style.display="block"
         document.querySelector("h2").style.display="none"
         document.getElementById("name").style.display="none"
-        let res=await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}`)
+        let res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}`)
         let data=await res.json()
         console.log(data)
         let iconId = data.weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+    let iconUrl = `https://openweathermap.org/img/wn/${iconId}.png`;
     document.getElementById("cityName").innerText=data.name
     document.getElementById("weatherIcon").src = iconUrl;
     document.getElementById("Temp").innerText=`${data.main.temp}°C`;
@@ -59,7 +59,7 @@ forCastData.forEach((day,indx)=>{
   <div class="forecast-day">
     <div class="forecast-date">${date}</div>
     <div class="forecast-icon">
-        <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
+        <img src="https://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
     </div>
     <div class="forecast-mintemp">Min Temp: ${temp}°C</div>
     <div class="forecast-temp">Max Temp: ${temp}°C</div>
